@@ -48,17 +48,26 @@ open class PagingTitleCell: PagingCell {
   open func configureTitleLabel() {
     guard let viewModel = viewModel else { return }
     titleLabel.text = viewModel.title
-    titleLabel.textAlignment = .center
-    
+    let font: UIFont
+    let textColor: UIColor
     if viewModel.selected {
-      titleLabel.font = viewModel.selectedFont
-      titleLabel.textColor = viewModel.selectedTextColor
+      font = viewModel.selectedFont
+      textColor = viewModel.selectedTextColor
       backgroundColor = viewModel.selectedBackgroundColor
     } else {
-      titleLabel.font = viewModel.font
-      titleLabel.textColor = viewModel.textColor
+      font = viewModel.font
+      textColor = viewModel.textColor
       backgroundColor = viewModel.backgroundColor
     }
+    
+    if titleLabel.text != "" {
+        let attributedString = NSMutableAttributedString(string: titleLabel.text ?? "")
+        attributedString.addAttribute(.kern, value: viewModel.spacingLabel ?? 0, range: NSRange(location: 0, length: (titleLabel.text?.count ?? 0)))
+        attributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: (titleLabel.text?.count ?? 0)))
+        attributedString.addAttribute(.foregroundColor, value: textColor, range: NSRange(location: 0, length: (titleLabel.text?.count ?? 0)))
+        titleLabel.attributedText = attributedString
+    }
+    titleLabel.textAlignment = .center
   }
   
   open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
