@@ -42,6 +42,7 @@ EMPageViewControllerDelegate where T: Hashable & Comparable {
         set { options.menuItemSpacing = newValue }
     }
     
+    /// Determine the spacing between characters in menu string. _Default: 0_
     public var spacingLabel: CGFloat {
         get { return options.spacingLabel }
         set { options.spacingLabel = newValue }

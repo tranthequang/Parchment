@@ -4,6 +4,7 @@ public class PagingOptions {
     public var menuItemSize: PagingMenuItemSize
     public var menuItemSource: PagingMenuItemSource
     public var menuItemSpacing: CGFloat
+    public var spacingLabel: CGFloat
     public var menuInsets: UIEdgeInsets
     public var menuHorizontalAlignment: PagingMenuHorizontalAlignment
     public var menuTransition: PagingMenuTransition
@@ -16,7 +17,7 @@ public class PagingOptions {
     public var borderClass: PagingBorderView.Type
     public var includeSafeAreaInsets: Bool
     public var font: UIFont
-    public var spacingLabel: CGFloat
+    
     public var selectedFont: UIFont
     public var textColor: UIColor
     public var selectedTextColor: UIColor
